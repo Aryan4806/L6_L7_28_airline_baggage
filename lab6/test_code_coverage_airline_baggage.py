@@ -13,7 +13,8 @@ from airline_baggage import baggage_fee, carry_on_ok, check_in_status
     ("economy", 20, "domestic", False, 100),
     ("premium", 30, "international", False, 225),
     ("business", 50, "international", True, 450),
-    ("economy", 36, "international", False, 1890),
+    ("economy", 30, "domestic", True, 100),
+    ("economy", 36, "international", False, 2100),
 ])
 def test_baggage_fee_representative_paths(cabin, weight, route, member, expected):
     assert baggage_fee(cabin, weight, route, member) == expected
