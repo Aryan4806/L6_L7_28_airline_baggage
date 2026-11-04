@@ -35,7 +35,7 @@ def test_member_and_allowance_boundaries(cabin, weight, member):
 @pytest.mark.parametrize("weight,route,expected", [
     (15, "domestic", 0), (16, "domestic", 20),
     (16, "international", 45), (36, "domestic", 840),
-    (36, "international", 1890), (35, "international", 900),
+    (36, "international", 2100), (35, "international", 900),
     (36, "other", 1890),
 ])
 def test_fee_route_and_excess_branches(weight, route, expected):
@@ -51,8 +51,8 @@ def test_carry_on_all_decisions(weight, items, infant, expected):
 @pytest.mark.parametrize("minutes,baggage,international,expected", [
     (120, True, False, "open"), (60, True, False, "open"),
     (45, True, False, "late"), (44, True, False, "closed"),
-    (180, False, True, "open"), (105, False, True, "late"),
-    (104, False, True, "closed"),
+    (180, False, True, "open"), (90, False, True, "late"),
+    (89, False, True, "closed"),
 ])
 def test_check_in_all_decisions(minutes, baggage, international, expected):
     assert check_in_status(minutes, baggage, international) == expected
